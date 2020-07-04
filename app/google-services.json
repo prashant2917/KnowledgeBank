@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "957268537627",
+    "firebase_url": "https://knowledge-bank-68485.firebaseio.com",
+    "project_id": "knowledge-bank-68485",
+    "storage_bucket": "knowledge-bank-68485.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957268537627:android:15344de8d6e6df67f4a3be",
+        "android_client_info": {
+          "package_name": "com.pocket.knowledge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957268537627-7ai4qse3dr9r01feansmfo0bfg88udok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKNg4DuDkLJ1jTZFXabAbRE1PwK4lWt1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957268537627-7ai4qse3dr9r01feansmfo0bfg88udok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
