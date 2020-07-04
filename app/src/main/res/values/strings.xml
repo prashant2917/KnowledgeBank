@@ -13,7 +13,7 @@
     <string name="admob_native_unit_id">ca-app-pub-9241627314364509/7582411393</string>
 
     <!-- youtube -->
-    <string name="youtube_api_key">AIzaSyCbehD6DCeDZHaGl8SUWKh1koTiHwKcvKY</string>
+    <string name="youtube_api_key">AIzaSyDuURTkrmJ7iy7UX-O-2zc_uExNNP6BHlI</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
 
     <!-- play store application link i.e more apps -->
