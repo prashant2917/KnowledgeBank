@@ -83,7 +83,7 @@ public class MyOneSignalMessagingService extends NotificationExtenderService {
         Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, Constant.NOTIFICATION_CHANNEL_NAME)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_notification_large))
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                 .setContentTitle(title)
                 .setTicker(message)
                 .setAutoCancel(true)
@@ -114,9 +114,11 @@ public class MyOneSignalMessagingService extends NotificationExtenderService {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             notificationBuilder.setColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
-            return R.drawable.ic_stat_onesignal_default;
+            //return R.drawable.ic_stat_onesignal_default;
+            return R.mipmap.ic_launcher;
         } else {
-            return R.drawable.ic_stat_onesignal_default;
+            //return R.drawable.ic_stat_onesignal_default;
+            return R.mipmap.ic_launcher;
         }
     }
 

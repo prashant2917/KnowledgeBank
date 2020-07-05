@@ -117,7 +117,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             mBuilder = new NotificationCompat.Builder(getBaseContext(), notificationChannel.getId());
 
             mBuilder.setContentTitle(title)
-                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_notification_large_icon))
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                     //.setSmallIcon(R.drawable.ic_stat_onesignal_default)
                     .setSmallIcon(getNotificationIcon(mBuilder))
                     .setContentText(Html.fromHtml(message, Html.FROM_HTML_MODE_LEGACY))
@@ -149,7 +149,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), (int) System.currentTimeMillis(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, Constant.NOTIFICATION_CHANNEL_NAME)
-                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_notification_large_icon))
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                     //.setSmallIcon(R.drawable.ic_stat_onesignal_default)
                     .setContentTitle(title)
                     .setContentText(Html.fromHtml(message))
@@ -185,9 +185,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private int getNotificationIcon(NotificationCompat.Builder notificationBuilder) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             notificationBuilder.setColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
-            return R.drawable.ic_stat_onesignal_default;
+           // return R.drawable.ic_stat_onesignal_default;
+            return  R.mipmap.ic_launcher;
         } else {
-            return R.drawable.ic_stat_onesignal_default;
+            //return R.drawable.ic_stat_onesignal_default;
+            return  R.mipmap.ic_launcher;
         }
     }
 

@@ -132,9 +132,10 @@
             </intent-filter>
         </service>
 
+        <!--android:resource="@drawable/ic_stat_onesignal_default" -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_stat_onesignal_default" />
+            android:resource="@drawable/ic_launcher_foreground" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
