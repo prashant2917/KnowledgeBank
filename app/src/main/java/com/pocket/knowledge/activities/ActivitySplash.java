@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +23,7 @@ public class ActivitySplash extends AppCompatActivity {
     String url = "";
     ThemePref themePref;
     ImageView img_splash;
+    RelativeLayout rlParentView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,10 +34,13 @@ public class ActivitySplash extends AppCompatActivity {
         themePref = new ThemePref(this);
 
         img_splash = findViewById(R.id.img_splash);
+        rlParentView=findViewById(R.id.parent_view);
         if (themePref.getIsDarkTheme()) {
-            img_splash.setImageResource(R.drawable.bg_splash_dark);
+            //img_splash.setImageResource(R.drawable.bg_splash_dark);
+            rlParentView.setBackgroundColor(getResources().getColor(R.color.colorBackgroundDark));
         } else {
-            img_splash.setImageResource(R.drawable.bg_splash_default);
+            //img_splash.setImageResource(R.drawable.bg_splash_default);
+            rlParentView.setBackgroundColor(getResources().getColor(R.color.colorBackgroundLight));
         }
 
         progressBar = findViewById(R.id.progressBar);

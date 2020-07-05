@@ -2,9 +2,9 @@
 <resources>
 
     <!--default theme color-->
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#1E88E5</color>
-    <color name="colorAccent">#4aafff</color>
+    <color name="colorPrimary">#ff7043</color>
+    <color name="colorPrimaryDark">#f4511e</color>
+    <color name="colorAccent">#ff7043</color>
     <color name="colorBackgroundLight">#FFFFFF</color>
 
     <!--dark theme color-->
@@ -20,8 +20,8 @@
     <color name="colorGreyMedium">#96989A</color>
     <color name="colorGreyDark">#797979</color>
     <color name="colorGreyDarkDeep">#424242</color>
-    <color name="colorCategory">#4aafff</color>
-    <color name="colorUsername">#1E88E5</color>
+    <color name="colorCategory">#ff7043</color>
+    <color name="colorUsername">#ff7043</color>
     <color name="colorRipple">#BCBEC1</color>
     <color name="colorOverlaySoft">#1A000000</color>
     <color name="colorOverlayDark">#33000000</color>

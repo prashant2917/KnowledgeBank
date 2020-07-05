@@ -50,7 +50,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_notification_large_icon" />
+            android:src="@mipmap/ic_launcher" />
 
     </RelativeLayout>
 
