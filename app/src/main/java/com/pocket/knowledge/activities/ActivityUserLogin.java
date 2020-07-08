@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +20,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pocket.knowledge.R;
 import com.pocket.knowledge.config.UiConfig;
 import com.pocket.knowledge.utils.Constant;
+import com.pocket.knowledge.utils.Base64Helper;
 import com.pocket.knowledge.utils.NetworkCheck;
 import com.pocket.knowledge.utils.Tools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 import id.solodroid.validationlibrary.Rule;
 import id.solodroid.validationlibrary.Validator;
@@ -48,6 +53,7 @@ public class ActivityUserLogin extends AppCompatActivity implements Validator.Va
     Button btnSingIn, btnSignUp;
     MyApplication MyApp;
     TextView txt_forgot;
+    private static final String TAG=ActivityUserLogin.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +97,17 @@ public class ActivityUserLogin extends AppCompatActivity implements Validator.Va
 
     @Override
     public void onValidationSucceeded() {
-        strEmail = edtEmail.getText().toString();
-        strPassword = edtPassword.getText().toString();
-        if (NetworkCheck.isNetworkAvailable(ActivityUserLogin.this)) {
-            new MyTaskLoginNormal().execute(Constant.NORMAL_LOGIN_URL + strEmail + "&password=" + strPassword);
+        try {
+            strEmail = edtEmail.getText().toString();
+            strPassword = edtPassword.getText().toString();
+            if (NetworkCheck.isNetworkAvailable(ActivityUserLogin.this)) {
+
+                new MyTaskLoginNormal().execute(Constant.NORMAL_LOGIN_URL + strEmail + "&password=" +Base64Helper.encrypt(strPassword));
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG,"Exception ");
         }
     }
 

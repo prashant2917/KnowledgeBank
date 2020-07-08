@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,12 +21,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pocket.knowledge.R;
 import com.pocket.knowledge.config.UiConfig;
 import com.pocket.knowledge.utils.Constant;
+import com.pocket.knowledge.utils.Base64Helper;
 import com.pocket.knowledge.utils.NetworkCheck;
 import com.pocket.knowledge.utils.Tools;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 import id.solodroid.validationlibrary.Rule;
 import id.solodroid.validationlibrary.Validator;
@@ -54,7 +59,7 @@ public class ActivityUserRegister extends AppCompatActivity implements Validator
     Button btnsignup, btn_login;
     TextView txt_terms;
     String strFullname, strEmail, strPassword, strMessage;
-
+    private static final String TAG=ActivityUserRegister.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,13 +97,15 @@ public class ActivityUserRegister extends AppCompatActivity implements Validator
 
     @Override
     public void onValidationSucceeded() {
+        try {
         strFullname = edtFullName.getText().toString().replace(" ", "%20");
         strEmail = edtEmail.getText().toString();
         strPassword = edtPassword.getText().toString();
 
 
         if (NetworkCheck.isNetworkAvailable(ActivityUserRegister.this)) {
-            new MyTaskRegister().execute(Constant.REGISTER_URL + strFullname + "&email=" + strEmail + "&password=" + strPassword);
+
+            new MyTaskRegister().execute(Constant.REGISTER_URL + strFullname + "&email=" + strEmail + "&password=" + Base64Helper.encrypt(strPassword));
         } else {
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
             dialog.setTitle(R.string.whops);
@@ -106,6 +113,10 @@ public class ActivityUserRegister extends AppCompatActivity implements Validator
             dialog.setPositiveButton(R.string.dialog_ok, null);
             dialog.setCancelable(false);
             dialog.show();
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG,"Exception ");
         }
 
     }

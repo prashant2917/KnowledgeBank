@@ -85,7 +85,7 @@
     <!--forgot password-->
     <string name="forgot_message">Enter the email that used during registration.</string>
     <string name="forgot_failed_message">Email is not found in our database!</string>
-    <string name="forgot_success_message">Password has been sent on your mail!</string>
+    <string name="forgot_success_message">Password has been sent on your mail, Please check Other folder in your mailbox if you don\'t receive the mail</string>
     <string name="forgot_password">Forgot Password?</string>
 
     <!--permission-->
