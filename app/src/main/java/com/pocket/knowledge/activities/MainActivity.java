@@ -1,5 +1,6 @@
 package com.pocket.knowledge.activities;
 
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -39,6 +40,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.pocket.knowledge.BuildConfig;
 import com.pocket.knowledge.R;
+import com.pocket.knowledge.callbacks.CallbackAppData;
 import com.pocket.knowledge.callbacks.CallbackSettings;
 import com.pocket.knowledge.callbacks.CallbackUser;
 import com.pocket.knowledge.config.AppConfig;
@@ -47,12 +49,16 @@ import com.pocket.knowledge.fragment.FragmentCategory;
 import com.pocket.knowledge.fragment.FragmentFavorite;
 import com.pocket.knowledge.fragment.FragmentRecent;
 import com.pocket.knowledge.fragment.FragmentVideo;
+import com.pocket.knowledge.models.AppData;
 import com.pocket.knowledge.models.Setting;
 import com.pocket.knowledge.models.User;
 import com.pocket.knowledge.notification.NotificationUtils;
 import com.pocket.knowledge.rests.ApiInterface;
 import com.pocket.knowledge.rests.RestAdapter;
+import com.pocket.knowledge.utils.AlertDialogCallback;
+import com.pocket.knowledge.utils.AlertDialogUtils;
 import com.pocket.knowledge.utils.AppBarLayoutBehavior;
+import com.pocket.knowledge.utils.AppDataUtil;
 import com.pocket.knowledge.utils.Constant;
 import com.pocket.knowledge.utils.GDPR;
 import com.pocket.knowledge.utils.HttpTask;
@@ -89,9 +95,11 @@ public class MainActivity extends AppCompatActivity {
     View view;
     User user;
     Setting post;
+    AppData appData;
     String androidId;
     private Call<CallbackUser> callbackCall = null;
     private Call<CallbackSettings> callbackCallSettings = null;
+    private Call<CallbackAppData> callbackCallAppData = null;
     ImageView img_profile;
     RelativeLayout btn_profile;
     ImageButton btn_search;
@@ -200,6 +208,8 @@ public class MainActivity extends AppCompatActivity {
         initToolbarIcon();
         displayUserProfile();
         validate();
+        requestAppData();
+
 
     }
 
@@ -346,6 +356,39 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<CallbackUser> call, Throwable t) {
+                if (!call.isCanceled()) onFailRequest();
+            }
+
+        });
+    }
+
+    private void requestAppData() {
+        ApiInterface api = RestAdapter.createAPI();
+        callbackCallAppData = api.getAppData();
+        callbackCallAppData.enqueue(new Callback<CallbackAppData>() {
+            @Override
+            public void onResponse(Call<CallbackAppData> call, Response<CallbackAppData> response) {
+                Log.d("ACTIVITY_MAIN","response "+response.toString());
+                CallbackAppData resp = response.body();
+                Log.d("ACTIVITY_MAIN","status "+resp.status);
+                if (resp != null && resp.status.equals("ok")) {
+                    appData = resp.appData;
+                    int versioncode=Integer.parseInt(appData.version_code);
+                   if(AppDataUtil.Companion.getAppVersionCode()< versioncode ){
+                       AlertDialogUtils.Companion.geTwoButtonDialog(MainActivity.this,
+                               getResources().getString(R.string.update_now_title),
+                               getResources().getString(R.string.update_msg),
+                               getResources().getString(R.string.update_now_positive_Btn),
+                               getResources().getString(R.string.dialog_cancel),appDataCallback).show();
+                   }
+
+                } else {
+                    onFailRequest();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CallbackAppData> call, Throwable t) {
                 if (!call.isCanceled()) onFailRequest();
             }
 
@@ -577,5 +620,24 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
         super.onPause();
     }
+
+    AlertDialogCallback appDataCallback= new AlertDialogCallback() {
+        @Override
+        public void onPositiveButtonClick() {
+            String appName = getPackageName();
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id="+appName)));
+
+            } catch (ActivityNotFoundException exception) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+appName)));
+            }
+        }
+
+        @Override
+        public void onNegativeButtonClick() {
+
+
+        }
+    };
 
 }

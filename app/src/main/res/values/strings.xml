@@ -175,5 +175,11 @@
 
     <!--package validation-->
     <string name="msg_validate">Unfortunately, your applicationId or package name is not registered.\n\nplease login to your admin panel and register your applicationId or package name in settings menu in the admin panel to continue using app.</string>
+    <!--update string-->
+    <string name="update_now_title">Update</string>
+    <string name="update_now_positive_Btn">Update Now</string>
+    <string name="update_msg">A new update of app is Available, Please Download it from play store.</string>
+
+
 
 </resources>

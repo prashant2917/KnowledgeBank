@@ -1,5 +1,6 @@
 package com.pocket.knowledge.rests;
 
+import com.pocket.knowledge.callbacks.CallbackAppData;
 import com.pocket.knowledge.callbacks.CallbackCategories;
 import com.pocket.knowledge.callbacks.CallbackCategoryDetails;
 import com.pocket.knowledge.callbacks.CallbackComments;
@@ -119,6 +120,10 @@ public interface ApiInterface {
     Call<CallbackUser> getUser(
             @Query("id") String id
     );
+
+    @Headers({CACHE, AGENT})
+    @GET("api/get_app_data")
+    Call<CallbackAppData> getAppData();
 
     @Headers({CACHE, AGENT})
     @GET("api/get_user_token")
