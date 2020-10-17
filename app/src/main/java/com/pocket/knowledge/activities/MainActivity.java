@@ -40,15 +40,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.pocket.knowledge.BuildConfig;
 import com.pocket.knowledge.R;
-import com.pocket.knowledge.callbacks.CallbackAppData;
-import com.pocket.knowledge.callbacks.CallbackSettings;
-import com.pocket.knowledge.callbacks.CallbackUser;
+import com.pocket.knowledge.callbacks.AppDataCallback;
+import com.pocket.knowledge.callbacks.SettingsCallback;
+import com.pocket.knowledge.callbacks.UserCallback;
 import com.pocket.knowledge.config.AppConfig;
 import com.pocket.knowledge.config.UiConfig;
-import com.pocket.knowledge.fragment.FragmentCategory;
-import com.pocket.knowledge.fragment.FragmentFavorite;
-import com.pocket.knowledge.fragment.FragmentRecent;
-import com.pocket.knowledge.fragment.FragmentVideo;
+import com.pocket.knowledge.fragment.CategoryFragment;
+import com.pocket.knowledge.fragment.FavoriteFragment;
+import com.pocket.knowledge.fragment.RecentFragment;
+import com.pocket.knowledge.fragment.VideoFragment;
 import com.pocket.knowledge.models.AppData;
 import com.pocket.knowledge.models.Setting;
 import com.pocket.knowledge.models.User;
@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
     Setting post;
     AppData appData;
     String androidId;
-    private Call<CallbackUser> callbackCall = null;
-    private Call<CallbackSettings> callbackCallSettings = null;
-    private Call<CallbackAppData> callbackCallAppData = null;
+    private Call<UserCallback> callbackCall = null;
+    private Call<SettingsCallback> callbackCallSettings = null;
+    private Call<AppDataCallback> callbackCallAppData = null;
     ImageView img_profile;
     RelativeLayout btn_profile;
     ImageButton btn_search;
@@ -224,13 +224,13 @@ public class MainActivity extends AppCompatActivity {
 
             switch (position) {
                 case 0:
-                    return new FragmentRecent();
+                    return new RecentFragment();
                 case 1:
-                    return new FragmentCategory();
+                    return new CategoryFragment();
                 case 2:
-                    return new FragmentVideo();
+                    return new VideoFragment();
                 case 3:
-                    return new FragmentFavorite();
+                    return new FavoriteFragment();
             }
             return null;
         }
@@ -258,10 +258,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         btn_search = findViewById(R.id.btn_search);
-        btn_search.setOnClickListener(view -> new Handler().postDelayed(() -> startActivity(new Intent(getApplicationContext(), ActivitySearch.class)), 50));
+        btn_search.setOnClickListener(view -> new Handler().postDelayed(() -> startActivity(new Intent(getApplicationContext(), SearchActivity.class)), 50));
 
         btn_profile = findViewById(R.id.btn_profile);
-        btn_profile.setOnClickListener(view -> new Handler().postDelayed(() -> startActivity(new Intent(getApplicationContext(), ActivityProfile.class)), 50));
+        btn_profile.setOnClickListener(view -> new Handler().postDelayed(() -> startActivity(new Intent(getApplicationContext(), ProfileActivity.class)), 50));
 
         btn_overflow = findViewById(R.id.btn_overflow);
         btn_overflow.setOnClickListener(view -> showBottomSheetDialog());
@@ -333,10 +333,10 @@ public class MainActivity extends AppCompatActivity {
     private void requestUserData() {
         ApiInterface apiInterface = RestAdapter.createAPI();
         callbackCall = apiInterface.getUser(myApplication.getUserId());
-        callbackCall.enqueue(new Callback<CallbackUser>() {
+        callbackCall.enqueue(new Callback<UserCallback>() {
             @Override
-            public void onResponse(Call<CallbackUser> call, Response<CallbackUser> response) {
-                CallbackUser resp = response.body();
+            public void onResponse(Call<UserCallback> call, Response<UserCallback> response) {
+                UserCallback resp = response.body();
                 if (resp != null && resp.status.equals("ok")) {
                     user = resp.response;
                     if (user.image.equals("")) {
@@ -355,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<CallbackUser> call, Throwable t) {
+            public void onFailure(Call<UserCallback> call, Throwable t) {
                 if (!call.isCanceled()) onFailRequest();
             }
 
@@ -365,11 +365,11 @@ public class MainActivity extends AppCompatActivity {
     private void requestAppData() {
         ApiInterface api = RestAdapter.createAPI();
         callbackCallAppData = api.getAppData();
-        callbackCallAppData.enqueue(new Callback<CallbackAppData>() {
+        callbackCallAppData.enqueue(new Callback<AppDataCallback>() {
             @Override
-            public void onResponse(Call<CallbackAppData> call, Response<CallbackAppData> response) {
+            public void onResponse(Call<AppDataCallback> call, Response<AppDataCallback> response) {
                 Log.d("ACTIVITY_MAIN","response "+response.toString());
-                CallbackAppData resp = response.body();
+                AppDataCallback resp = response.body();
                 Log.d("ACTIVITY_MAIN","status "+resp.status);
                 if (resp != null && resp.status.equals("ok")) {
                     appData = resp.appData;
@@ -388,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<CallbackAppData> call, Throwable t) {
+            public void onFailure(Call<AppDataCallback> call, Throwable t) {
                 if (!call.isCanceled()) onFailRequest();
             }
 
@@ -398,10 +398,10 @@ public class MainActivity extends AppCompatActivity {
     private void validate() {
         ApiInterface api = RestAdapter.createAPI();
         callbackCallSettings = api.getSettings();
-        callbackCallSettings.enqueue(new Callback<CallbackSettings>() {
+        callbackCallSettings.enqueue(new Callback<SettingsCallback>() {
             @Override
-            public void onResponse(Call<CallbackSettings> call, Response<CallbackSettings> response) {
-                CallbackSettings resp = response.body();
+            public void onResponse(Call<SettingsCallback> call, Response<SettingsCallback> response) {
+                SettingsCallback resp = response.body();
                 if (resp != null && resp.status.equals("ok")) {
                     post = resp.post;
                     if (BuildConfig.APPLICATION_ID.equals(post.package_name)) {
@@ -421,7 +421,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<CallbackSettings> call, Throwable t) {
+            public void onFailure(Call<SettingsCallback> call, Throwable t) {
                 if (!call.isCanceled()) onFailRequest();
             }
 
@@ -431,10 +431,10 @@ public class MainActivity extends AppCompatActivity {
     private void requestUpdateToken() {
         ApiInterface apiInterface = RestAdapter.createAPI();
         callbackCall = apiInterface.getUserToken('"' + androidId + '"');
-        callbackCall.enqueue(new Callback<CallbackUser>() {
+        callbackCall.enqueue(new Callback<UserCallback>() {
             @Override
-            public void onResponse(Call<CallbackUser> call, Response<CallbackUser> response) {
-                CallbackUser resp = response.body();
+            public void onResponse(Call<UserCallback> call, Response<UserCallback> response) {
+                UserCallback resp = response.body();
                 if (resp != null && resp.status.equals("ok")) {
                     user = resp.response;
                     String token = user.token;
@@ -452,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<CallbackUser> call, Throwable t) {
+            public void onFailure(Call<UserCallback> call, Throwable t) {
                 if (!call.isCanceled()) onFailRequest();
             }
 
@@ -524,7 +524,7 @@ public class MainActivity extends AppCompatActivity {
         popup.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_popup_privacy:
-                    startActivity(new Intent(getApplicationContext(), ActivityPrivacyPolicy.class));
+                    startActivity(new Intent(getApplicationContext(), PrivacyPolicyActivity.class));
                     return true;
 
                 case R.id.menu_popup_rate:
@@ -580,7 +580,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        view.findViewById(R.id.btn_privacy_policy).setOnClickListener(action -> startActivity(new Intent(getApplicationContext(), ActivityPrivacyPolicy.class)));
+        view.findViewById(R.id.btn_privacy_policy).setOnClickListener(action -> startActivity(new Intent(getApplicationContext(), PrivacyPolicyActivity.class)));
         view.findViewById(R.id.btn_rate).setOnClickListener(action -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID))));
         view.findViewById(R.id.btn_more).setOnClickListener(action -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.play_more_apps)))));
         view.findViewById(R.id.btn_about).setOnClickListener(action -> aboutDialog());

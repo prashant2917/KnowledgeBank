@@ -21,9 +21,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 
 import com.pocket.knowledge.R;
-import com.pocket.knowledge.activities.ActivityNotificationDetail;
-import com.pocket.knowledge.activities.ActivityWebView;
-import com.pocket.knowledge.activities.ActivityWebViewImage;
+import com.pocket.knowledge.activities.NotificationDetailActivity;
+import com.pocket.knowledge.activities.WebViewActivity;
+import com.pocket.knowledge.activities.WebViewImageActivity;
 import com.pocket.knowledge.config.UiConfig;
 import com.squareup.picasso.Picasso;
 
@@ -89,12 +89,12 @@ public class NotificationUtils {
                 if (url.equals("") || url.equals("no_url")) {
                     Log.d("OneSignal", "do nothing");
                 } else {
-                    Intent act1 = new Intent(activity, ActivityWebView.class);
+                    Intent act1 = new Intent(activity, WebViewActivity.class);
                     act1.putExtra("url", url);
                     activity.startActivity(act1);
                 }
             } else {
-                Intent act2 = new Intent(activity, ActivityNotificationDetail.class);
+                Intent act2 = new Intent(activity, NotificationDetailActivity.class);
                 act2.putExtra("id", nid);
                 activity.startActivity(act2);
             }
@@ -112,17 +112,17 @@ public class NotificationUtils {
                 if (!url.equals("")) {
                     if (UiConfig.OPEN_LINK_INSIDE_APP) {
                         if (url.startsWith("http://")) {
-                            Intent a = new Intent(activity, ActivityWebView.class);
+                            Intent a = new Intent(activity, WebViewActivity.class);
                             a.putExtra("url", url);
                             activity.startActivity(a);
                         }
                         if (url.startsWith("https://")) {
-                            Intent b = new Intent(activity, ActivityWebView.class);
+                            Intent b = new Intent(activity, WebViewActivity.class);
                             b.putExtra("url", url);
                             activity.startActivity(b);
                         }
                         if (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png")) {
-                            Intent c = new Intent(activity, ActivityWebViewImage.class);
+                            Intent c = new Intent(activity, WebViewImageActivity.class);
                             c.putExtra("image_url", url);
                             activity.startActivity(c);
                         }
@@ -139,7 +139,7 @@ public class NotificationUtils {
                 }
                 Log.d("FCM_INFO", " id : " + fcm_id);
             } else {
-                Intent action = new Intent(activity, ActivityNotificationDetail.class);
+                Intent action = new Intent(activity, NotificationDetailActivity.class);
                 action.putExtra("id", fcm_id);
                 activity.startActivity(action);
                 Log.d("FCM_INFO", "id : " + fcm_id);
@@ -178,17 +178,17 @@ public class NotificationUtils {
                     alert.setPositiveButton("Open link", (dialogInterface, i) -> {
                         if (UiConfig.OPEN_LINK_INSIDE_APP) {
                             if (url.startsWith("http://")) {
-                                Intent intent1 = new Intent(activity, ActivityWebView.class);
+                                Intent intent1 = new Intent(activity, WebViewActivity.class);
                                 intent1.putExtra("url", url);
                                 activity.startActivity(intent1);
                             }
                             if (url.startsWith("https://")) {
-                                Intent intent1 = new Intent(activity, ActivityWebView.class);
+                                Intent intent1 = new Intent(activity, WebViewActivity.class);
                                 intent1.putExtra("url", url);
                                 activity.startActivity(intent1);
                             }
                             if (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png")) {
-                                Intent intent1 = new Intent(activity, ActivityWebViewImage.class);
+                                Intent intent1 = new Intent(activity, WebViewImageActivity.class);
                                 intent1.putExtra("image_url", url);
                                 activity.startActivity(intent1);
                             }
@@ -222,7 +222,7 @@ public class NotificationUtils {
                         .into(notification_image);
 
                 alert.setPositiveButton(activity.getResources().getString(R.string.dialog_read_more), (dialog, which) -> {
-                    Intent intent12 = new Intent(activity, ActivityNotificationDetail.class);
+                    Intent intent12 = new Intent(activity, NotificationDetailActivity.class);
                     intent12.putExtra("id", id);
                     activity.startActivity(intent12);
                 });

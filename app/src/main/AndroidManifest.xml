@@ -26,7 +26,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name="com.pocket.knowledge.activities.ActivitySplash"
+            android:name="com.pocket.knowledge.activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,65 +42,65 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityUserLogin"
+            android:name="com.pocket.knowledge.activities.UserLoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityUserRegister"
+            android:name="com.pocket.knowledge.activities.UserRegisterActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityEditProfile"
+            android:name="com.pocket.knowledge.activities.EditProfileActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityForgotPassword"
+            android:name="com.pocket.knowledge.activities.ForgotPasswordActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityFullScreenImage"
+            android:name="com.pocket.knowledge.activities.FullScreenImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityComments"
+            android:name="com.pocket.knowledge.activities.CommentsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityCategoryDetails"
+            android:name="com.pocket.knowledge.activities.CategoryDetailsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityPrivacyPolicy"
+            android:name="com.pocket.knowledge.activities.PrivacyPolicyActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityYoutubePlayer"
+            android:name="com.pocket.knowledge.activities.YoutubePlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityVideoPlayer"
+            android:name="com.pocket.knowledge.activities.VideoPlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityWebView"
+            android:name="com.pocket.knowledge.activities.WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityWebViewImage"
+            android:name="com.pocket.knowledge.activities.WebViewImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityPostDetail"
+            android:name="com.pocket.knowledge.activities.PostDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityPostDetailOffline"
+            android:name="com.pocket.knowledge.activities.PostDetailOfflineActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityNotificationDetail"
+            android:name="com.pocket.knowledge.activities.NotificationDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityImageSlider"
+            android:name="com.pocket.knowledge.activities.ImageSliderActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivityProfile"
+            android:name="com.pocket.knowledge.activities.ProfileActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
-            android:name="com.pocket.knowledge.activities.ActivitySearch"
+            android:name="com.pocket.knowledge.activities.SearchActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateVisible" />
 

@@ -1,13 +1,13 @@
 package com.pocket.knowledge.rests;
 
-import com.pocket.knowledge.callbacks.CallbackAppData;
-import com.pocket.knowledge.callbacks.CallbackCategories;
-import com.pocket.knowledge.callbacks.CallbackCategoryDetails;
-import com.pocket.knowledge.callbacks.CallbackComments;
-import com.pocket.knowledge.callbacks.CallbackPostDetail;
-import com.pocket.knowledge.callbacks.CallbackRecent;
-import com.pocket.knowledge.callbacks.CallbackSettings;
-import com.pocket.knowledge.callbacks.CallbackUser;
+import com.pocket.knowledge.callbacks.AppDataCallback;
+import com.pocket.knowledge.callbacks.CategoriesCallback;
+import com.pocket.knowledge.callbacks.CategoryDetailsCallback;
+import com.pocket.knowledge.callbacks.CommentsCallback;
+import com.pocket.knowledge.callbacks.PostDetailCallback;
+import com.pocket.knowledge.callbacks.RecentCallback;
+import com.pocket.knowledge.callbacks.SettingsCallback;
+import com.pocket.knowledge.callbacks.UserCallback;
 import com.pocket.knowledge.models.User;
 import com.pocket.knowledge.models.Value;
 
@@ -26,13 +26,13 @@ public interface ApiInterface {
 
     @Headers({CACHE, AGENT})
     @GET("api/get_news_detail")
-    Call<CallbackPostDetail> getNewsDetail(
+    Call<PostDetailCallback> getNewsDetail(
             @Query("id") long id
     );
 
     @Headers({CACHE, AGENT})
     @GET("api/get_recent_posts")
-    Call<CallbackRecent> getRecentPost(
+    Call<RecentCallback> getRecentPost(
             @Query("api_key") String api_key,
             @Query("page") int page,
             @Query("count") int count
@@ -40,7 +40,7 @@ public interface ApiInterface {
 
     @Headers({CACHE, AGENT})
     @GET("api/get_video_posts")
-    Call<CallbackRecent> getVideoPost(
+    Call<RecentCallback> getVideoPost(
             @Query("api_key") String api_key,
             @Query("page") int page,
             @Query("count") int count
@@ -48,13 +48,13 @@ public interface ApiInterface {
 
     @Headers({CACHE, AGENT})
     @GET("api/get_category_index")
-    Call<CallbackCategories> getAllCategories(
+    Call<CategoriesCallback> getAllCategories(
             @Query("api_key") String api_key
     );
 
     @Headers({CACHE, AGENT})
     @GET("api/get_category_posts")
-    Call<CallbackCategoryDetails> getCategoryDetailsByPage(
+    Call<CategoryDetailsCallback> getCategoryDetailsByPage(
             @Query("id") long id,
             @Query("api_key") String api_key,
             @Query("page") long page,
@@ -63,7 +63,7 @@ public interface ApiInterface {
 
     @Headers({CACHE, AGENT})
     @GET("api/get_search_results")
-    Call<CallbackRecent> getSearchPosts(
+    Call<RecentCallback> getSearchPosts(
             @Query("api_key") String api_key,
             @Query("search") String search,
             @Query("count") int count
@@ -71,7 +71,7 @@ public interface ApiInterface {
 
     @Headers({CACHE, AGENT})
     @GET("api/get_comments")
-    Call<CallbackComments> getComments(@Query("nid") Long nid
+    Call<CommentsCallback> getComments(@Query("nid") Long nid
     );
 
     @FormUrlEncoded
@@ -113,21 +113,21 @@ public interface ApiInterface {
 
     @Headers({CACHE, AGENT})
     @GET("api/get_settings")
-    Call<CallbackSettings> getSettings();
+    Call<SettingsCallback> getSettings();
 
     @Headers({CACHE, AGENT})
     @GET("api/get_user_data")
-    Call<CallbackUser> getUser(
+    Call<UserCallback> getUser(
             @Query("id") String id
     );
 
     @Headers({CACHE, AGENT})
     @GET("api/get_app_data")
-    Call<CallbackAppData> getAppData();
+    Call<AppDataCallback> getAppData();
 
     @Headers({CACHE, AGENT})
     @GET("api/get_user_token")
-    Call<CallbackUser> getUserToken(
+    Call<UserCallback> getUserToken(
             @Query("user_unique_id") String user_unique_id
     );
 

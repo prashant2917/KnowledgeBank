@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.pocket.knowledge.R;
-import com.pocket.knowledge.activities.ActivityVideoPlayer;
-import com.pocket.knowledge.activities.ActivityYoutubePlayer;
+import com.pocket.knowledge.activities.VideoPlayerActivity;
+import com.pocket.knowledge.activities.YoutubePlayerActivity;
 import com.pocket.knowledge.config.AppConfig;
 import com.pocket.knowledge.config.UiConfig;
 import com.pocket.knowledge.models.Images;
@@ -58,7 +58,7 @@ public class AdapterImageSlider extends PagerAdapter {
                     .into(news_image);
 
             news_image.setOnClickListener(v -> {
-                Intent intent = new Intent(context, ActivityYoutubePlayer.class);
+                Intent intent = new Intent(context, YoutubePlayerActivity.class);
                 intent.putExtra("video_id", post.video_id);
                 context.startActivity(intent);
             });
@@ -71,7 +71,7 @@ public class AdapterImageSlider extends PagerAdapter {
                     .into(news_image);
 
             news_image.setOnClickListener(v -> {
-                Intent intent = new Intent(context, ActivityVideoPlayer.class);
+                Intent intent = new Intent(context, VideoPlayerActivity.class);
                 intent.putExtra("video_url", post.video_url);
                 context.startActivity(intent);
             });
@@ -83,7 +83,7 @@ public class AdapterImageSlider extends PagerAdapter {
                     .into(news_image);
 
             news_image.setOnClickListener(v -> {
-                Intent intent = new Intent(context, ActivityVideoPlayer.class);
+                Intent intent = new Intent(context, VideoPlayerActivity.class);
                 intent.putExtra("video_url", AppConfig.ADMIN_PANEL_URL + "/upload/video/" + post.video_url);
                 context.startActivity(intent);
             });
