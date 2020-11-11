@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <com.pocket.knowledge.utils.TemplateView
-        android:id="@+id/native_template"
+        android:id="@+id/recent_native_template"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -26,13 +26,13 @@
         app:mrl_rippleOverlay="true">
 
         <LinearLayout
-            android:id="@+id/lyt_parent"
+            android:id="@+id/recent_lyt_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/thumb"
+                android:id="@+id/recent_thumb"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
 
@@ -68,7 +68,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/title"
+                        android:id="@+id/txt_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxLines="2"
@@ -100,7 +100,7 @@
                             android:tint="@color/colorGreyDark" />
 
                         <TextView
-                            android:id="@+id/date"
+                            android:id="@+id/txt_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="3dp"

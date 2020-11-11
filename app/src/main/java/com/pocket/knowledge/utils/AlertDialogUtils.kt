@@ -17,7 +17,7 @@ class AlertDialogUtils{
                 alertDialogCallback.onNegativeButtonClick()
 
             }
-            return dialog;
+            return dialog
 
         }
     }

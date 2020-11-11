@@ -13,7 +13,7 @@
         app:mrl_rippleOverlay="true">
 
         <LinearLayout
-            android:id="@+id/lyt_parent"
+            android:id="@+id/recent_lyt_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

@@ -64,7 +64,7 @@
         android:layout_marginRight="12dp">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lorem ipsum sit amet dolor Lorem ipsum sit amet dolor"
@@ -73,10 +73,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/category"
+            android:id="@+id/txt_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
+            android:layout_below="@+id/txt_title"
             android:layout_marginTop="8dp"
             android:paddingLeft="5dp"
             android:paddingTop="3dp"
@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:layout_below="@+id/category">
+            android:layout_below="@+id/txt_category">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -102,7 +102,7 @@
                 android:layout_centerVertical="true">
 
                 <TextView
-                    android:id="@+id/date"
+                    android:id="@+id/txt_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"

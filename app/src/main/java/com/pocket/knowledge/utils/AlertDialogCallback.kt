@@ -1,6 +1,6 @@
 package com.pocket.knowledge.utils
 
 interface AlertDialogCallback {
-fun onPositiveButtonClick();
-fun onNegativeButtonClick();
+fun onPositiveButtonClick()
+    fun onNegativeButtonClick()
 }
