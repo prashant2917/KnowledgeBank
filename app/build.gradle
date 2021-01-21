@@ -21,7 +21,9 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.pocket.knowledge"
-
+        dataBinding {
+            enabled true
+        }
         manifestPlaceholders = [onesignal_app_id: "1f697069-6f57-4f38-926e-842854bf7bfa",
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: "REMOTE"]
@@ -48,6 +50,9 @@ android {
     }
 
     useLibrary 'org.apache.http.legacy'
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 /* IMPORTANT :
@@ -80,6 +85,19 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.4.0'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //mvvm structure code
+
+    def nav_version_ktx = "2.3.0-alpha01"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version_ktx"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version_ktx"
+
+    def material_version = "1.1.0"
+    implementation "com.google.android.material:material:$material_version"
+
+    def fragment_version = "1.2.2"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -108,7 +108,7 @@
     <string name="title_forgot_password">FORGOT PASSWORD</string>
     <string name="txt_suggested">Suggested</string>
 
-    <!--bottom navigation title-->
+    <!--bottom bottom_navigation title-->
     <string name="title_nav_home">Home</string>
     <string name="title_nav_category">Category</string>
     <string name="title_nav_video">Video</string>

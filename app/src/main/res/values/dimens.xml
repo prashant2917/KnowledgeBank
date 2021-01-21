@@ -20,4 +20,39 @@
     <dimen name="gnt_no_margin">0dp</dimen>
     <dimen name="gnt_no_size">0dp</dimen>
 
+    <!--mvvm_structure-->
+    <dimen name="dimen_0">0dp</dimen>
+    <dimen name="dimen_2">2dp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
+    <dimen name="dimen_24">24dp</dimen>
+    <dimen name="dimen_28">28dp</dimen>
+    <dimen name="dimen_32">32dp</dimen>
+    <dimen name="dimen_36">36dp</dimen>
+    <dimen name="dimen_40">40dp</dimen>
+    <dimen name="dimen_44">44dp</dimen>
+    <dimen name="dimen_48">48dp</dimen>
+
+    <dimen name="padding_xsss">@dimen/dimen_2</dimen>
+    <dimen name="padding_xss">@dimen/dimen_4</dimen>
+    <dimen name="padding_xs">@dimen/dimen_8</dimen>
+    <dimen name="padding_s">@dimen/dimen_12</dimen>
+    <dimen name="padding_m">@dimen/dimen_16</dimen>
+    <dimen name="padding_l">@dimen/dimen_24</dimen>
+    <dimen name="padding_xl">@dimen/dimen_32</dimen>
+    <dimen name="padding_xxl">@dimen/dimen_48</dimen>
+
+
+    <dimen name="margin_xsss">@dimen/dimen_4</dimen>
+    <dimen name="margin_xss">@dimen/dimen_8</dimen>
+    <dimen name="margin_xs">@dimen/dimen_12</dimen>
+    <dimen name="margin_s">@dimen/dimen_16</dimen>
+    <dimen name="margin_m">@dimen/dimen_24</dimen>
+    <dimen name="margin_l">@dimen/dimen_32</dimen>
+    <dimen name="margin_xl">@dimen/dimen_40</dimen>
+    <dimen name="margin_xxl">@dimen/dimen_48</dimen>
+
 </resources>
