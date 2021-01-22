@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_favourite">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_favourite"
+    app:startDestination="@id/fragment_favourite">
+    <fragment
+        android:id="@+id/fragment_favourite"
+        android:name="com.pocket.knowledge.fragment.FragmentFavorite"
+        android:label="@string/title_nav_favorite" />
 </navigation>

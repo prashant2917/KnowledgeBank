@@ -5,8 +5,14 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragment_home">
 
-    <fragment android:name="com.pocket.knowledge.fragment.FragmentHome"
+    <include app:graph="@navigation/nav_home" />
+    <include app:graph="@navigation/nav_category" />
+    <include app:graph="@navigation/nav_favourite" />
+    <include app:graph="@navigation/nav_video" />
+
+    <fragment
         android:id="@+id/fragment_home"
+        android:name="com.pocket.knowledge.fragment.FragmentHome"
         android:label="@string/title_nav_home" />
 
 </navigation>

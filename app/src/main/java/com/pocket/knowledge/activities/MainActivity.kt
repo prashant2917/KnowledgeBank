@@ -1,24 +1,28 @@
-package com.pocket.knowledge.activities;
+package com.pocket.knowledge.activities
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.setupWithNavController
 import com.pocket.knowledge.R
 import com.pocket.knowledge.databinding.ActivityMainBinding
 
 class MainActivity:BaseActivity(){
-    lateinit var binding: ActivityMainBinding
-
+    private lateinit var binding: ActivityMainBinding
+    private val navController:NavController by lazy {
+        Navigation.findNavController(this,R.id.fragment_container)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // setContentView(R.layout.activity_main)
         binding=DataBindingUtil.setContentView(this, R.layout.activity_main)
         setToolBarTitle(resources.getString(R.string.title_nav_home))
-
+        binding.navigationBar.setupWithNavController(navController)
     }
 
     override fun setToolBarTitle(title: String) {
-        //binding.toolbarTitle=title
+        binding.toolbarTitle=title
     }
 
 }
