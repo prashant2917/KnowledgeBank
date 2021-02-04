@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,7 +42,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FragmentCategory extends Fragment {
+public class FragmentCategory extends BaseFragment {
 
     private View root_view, parent_view;
     private RecyclerView recyclerView;
@@ -95,6 +96,12 @@ public class FragmentCategory extends Fragment {
         requestAction();
 
         return root_view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setToolbarTitle(getResources().getString(R.string.title_nav_category));
     }
 
     private void displayApiResult(final List<Category> categories) {

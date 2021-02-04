@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,7 +29,7 @@ import com.pocket.knowledge.utils.NetworkCheck;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentFavorite extends Fragment {
+public class FragmentFavorite extends BaseFragment {
 
     private List<News> data = new ArrayList<News>();
     private View root_view, parent_view;
@@ -66,6 +67,12 @@ public class FragmentFavorite extends Fragment {
         loadDataFromDatabase();
 
         return root_view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setToolbarTitle(getResources().getString(R.string.title_nav_favorite));
     }
 
     @Override

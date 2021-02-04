@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,7 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FragmentHome extends Fragment {
+public class FragmentHome extends BaseFragment {
 
     private View root_view, parent_view;
     private RecyclerView recyclerView;
@@ -103,6 +104,7 @@ public class FragmentHome extends Fragment {
 
         requestAction(1);
 
+
         return root_view;
     }
 
@@ -135,6 +137,12 @@ public class FragmentHome extends Fragment {
             }
 
         });
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setToolbarTitle(getResources().getString(R.string.title_nav_home));
     }
 
     private void onFailRequest(int page_no) {

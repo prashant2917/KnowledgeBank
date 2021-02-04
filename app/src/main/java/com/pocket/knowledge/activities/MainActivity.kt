@@ -27,7 +27,7 @@ class MainActivity : BaseActivity() {
 
     override fun setToolBarTitle(title: String) {
         title.let {
-            toolbar.title = title
+            supportActionBar?.title = it
         }
     }
 }

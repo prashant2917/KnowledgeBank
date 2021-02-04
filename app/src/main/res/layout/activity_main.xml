@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:name="androidx.navigation.fragment.NavHostFragment"
-            app:defaultNavHost="false"
+            app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph"
             app:layout_constraintTop_toBottomOf="@+id/layout_toolbar"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_bar"
